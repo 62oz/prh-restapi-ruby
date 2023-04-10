@@ -1,3 +1,5 @@
+require "sqlite3"
+
 def getDB(name)
     # Open a database
     begin

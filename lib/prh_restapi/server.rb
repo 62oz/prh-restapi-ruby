@@ -1,6 +1,7 @@
 require 'webrick'
 require 'json'
 require_relative 'database'
+require_relative 'client'
 
 
 class PostalCodeHandler < WEBrick::HTTPServlet::AbstractServlet
@@ -27,7 +28,7 @@ class PostalCodeHandler < WEBrick::HTTPServlet::AbstractServlet
         if companies.empty?
             # Get the data from the API
             puts "Fetching data from the API for new postal code..."
-            companies = fetch_data([code], 20)
+            companies = fetch_data([code], 2)
             if companies.nil?
                 response.status = 500
                 response.body = "Internal server error: companies is nil 2"
